@@ -19,7 +19,7 @@ namespace WCell.Util.Data
 		{
 			foreach (var type in asm.GetTypes())
 			{
-				if (type.GetCustomAttributes<DataHolderAttribute>().Count() > 0)
+				if (type.RetrieveCustomAttributes<DataHolderAttribute>().Count() > 0)
 				{
 					var holder = CreateDataHolderDefinition(type);
 					DataHolderDefinitions.Add(holder.Name, holder);
@@ -33,7 +33,7 @@ namespace WCell.Util.Data
 			var dataHolderDefinitions = new Dictionary<string, DataHolderDefinition>();
 			foreach (var type in asm.GetTypes())
 			{
-				if (type.GetCustomAttributes<DataHolderAttribute>().Count() > 0)
+				if (type.RetrieveCustomAttributes<DataHolderAttribute>().Count() > 0)
 				{
 					var holder = CreateDataHolderDefinition(type);
 					dataHolderDefinitions.Add(holder.Name, holder);
@@ -58,7 +58,7 @@ namespace WCell.Util.Data
 			{
 				type.ToString();
 			}
-				if (type.GetCustomAttributes<DataHolderAttribute>().Count() > 0)
+				if (type.RetrieveCustomAttributes<DataHolderAttribute>().Count() > 0)
 				{
 					var holder = CreateDataHolderDefinition(type);
 					dataHolderDefinitions.Add(holder);

@@ -166,7 +166,7 @@ namespace WCell.Core.Initialization
 		{
 			foreach (var type in asm.GetTypes())
 			{
-				var mgrAttr = type.GetCustomAttributes<GlobalMgrAttribute>().FirstOrDefault(); //TODO: This call is ambigious in net 4.5
+				var mgrAttr = type.RetrieveCustomAttributes<GlobalMgrAttribute>().FirstOrDefault(); //TODO: This call is ambigious in net 4.5
 				if (mgrAttr != null)
 				{
 					UnresolvedDependencies.Add(type, new GlobalMgrInfo());
@@ -206,7 +206,7 @@ namespace WCell.Core.Initialization
 
         public void AddStepsOfType(Type type, List<DependentInitializationStep> dependentInitors)
         {
-            var mgrAttr = type.GetCustomAttributes<GlobalMgrAttribute>().FirstOrDefault();
+            var mgrAttr = type.RetrieveCustomAttributes<GlobalMgrAttribute>().FirstOrDefault();
             if (mgrAttr != null)
             {
                 UnresolvedDependencies.Add(type, new GlobalMgrInfo());
@@ -218,8 +218,8 @@ namespace WCell.Core.Initialization
             // Check each method we found to see if it has an initialization attribute.
             foreach (var method in methods)
             {
-                var attribute = method.GetCustomAttributes<InitializationAttribute>().FirstOrDefault();
-                var depInitorAttrs = method.GetCustomAttributes<DependentInitializationAttribute>();
+                var attribute = method.RetrieveCustomAttributes<InitializationAttribute>().FirstOrDefault();
+                var depInitorAttrs = method.RetrieveCustomAttributes<DependentInitializationAttribute>();
 
                 // Can't have multiple instances of the attribute on a single method, so we check for 1.
                 if (attribute != null)

@@ -68,7 +68,7 @@ namespace WCell.Core.Addons
 					var interfaces = type.GetInterfaces();
 					if (interfaces.Contains(typeof(IWCellAddon)))
 					{
-						var addonAttributes = type.GetCustomAttributes<WCellAddonAttribute>();
+						var addonAttributes = type.RetrieveCustomAttributes<WCellAddonAttribute>();
 						m_attr = addonAttributes.Length > 0 ? addonAttributes[0] : null;
 						m_addon = (IWCellAddon)Activator.CreateInstance(type);
 

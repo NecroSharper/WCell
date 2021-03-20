@@ -128,7 +128,7 @@ namespace WCell.Core.Network
 
 			foreach (var method in methods)
 			{
-				var attributes = method.GetCustomAttributes<A>();
+				var attributes = method.RetrieveCustomAttributes<A>();
 
 				if (attributes.Length == 0)
 					continue;
