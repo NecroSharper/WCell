@@ -21,8 +21,8 @@ ECHO These can be edited in CONFIGURATION.bat
 ECHO.
 pause
 
-if %user%==changeme GOTO error2
-if %pass%==changeme GOTO error2
+if [%user%]==changeme GOTO error2
+if [%pass%]==changeme GOTO error2
 if "%udbdir%"=="changeme" GOTO error3
 :menu
 cls
