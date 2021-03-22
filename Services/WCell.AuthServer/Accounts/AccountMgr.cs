@@ -271,7 +271,7 @@ namespace WCell.AuthServer.Accounts
 		private void Update(Account acc)
 		{
 			Account oldAcc;
-			if (!m_cachedAccsById.TryGetValue(acc.AccountId, out oldAcc))
+			if (!m_cachedAccsById.TryGetValue(acc.AccountId, out oldAcc) && acc.Name != null)
 			{
 				m_cachedAccsById[acc.AccountId] = acc;
 				m_cachedAccsByName[acc.Name] = acc;

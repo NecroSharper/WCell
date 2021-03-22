@@ -63,13 +63,13 @@ namespace WCell.Util.Toolshed
 					}
 
 
-					var excludeAttrs = method.GetCustomAttributes<NoToolAttribute>();
+					var excludeAttrs = method.RetrieveCustomAttributes<NoToolAttribute>();
 					if (excludeAttrs.Length > 0)
 					{
 						continue;
 					}
 
-					var toolAttr = method.GetCustomAttributes<ToolAttribute>().FirstOrDefault();
+					var toolAttr = method.RetrieveCustomAttributes<ToolAttribute>().FirstOrDefault();
 					if (toolAttr != null)
 					{
 						name = toolAttr.Name ?? name;

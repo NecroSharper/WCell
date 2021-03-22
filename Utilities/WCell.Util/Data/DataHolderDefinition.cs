@@ -39,7 +39,7 @@ namespace WCell.Util.Data
 			m_Attribute = attribute;
 			m_Type = type;
 
-			var dependingProducerTypes = type.GetCustomAttributes<DependingProducer>();
+			var dependingProducerTypes = type.RetrieveCustomAttributes<DependingProducer>();
 			if (dependingProducerTypes.Length == 0)
 			{
 				m_dependingProducers = null;
@@ -264,12 +264,12 @@ namespace WCell.Util.Data
 					continue;
 				}
 
-				if (member.GetCustomAttributes<NotPersistentAttribute>().Length > 0)
+				if (member.RetrieveCustomAttributes<NotPersistentAttribute>().Length > 0)
 				{
 					continue;
 				}
 
-				var dbAttrs = member.GetCustomAttributes<DBAttribute>();
+				var dbAttrs = member.RetrieveCustomAttributes<DBAttribute>();
 				var persistentAttribute = dbAttrs.Where(attribute => attribute is PersistentAttribute).FirstOrDefault() as PersistentAttribute;
 				if (persistentAttribute == null && m_Attribute.RequirePersistantAttr)
 				{

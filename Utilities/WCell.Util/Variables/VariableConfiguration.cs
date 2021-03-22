@@ -371,7 +371,7 @@ namespace WCell.Util.Variables
 		{
 			foreach (var member in members)
 			{
-				var notVarAttr = member.GetCustomAttributes<NotVariableAttribute>().FirstOrDefault();
+				var notVarAttr = member.RetrieveCustomAttributes<NotVariableAttribute>().FirstOrDefault();
 				if (notVarAttr != null)
 				{
 					continue;

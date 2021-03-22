@@ -828,7 +828,7 @@ namespace WCell.Util
 		/// <typeparam name="T">The type of attribute to search for. Only attributes that are assignable to this type are returned.</typeparam>
 		/// <param name="methodInfo"></param>
 		/// <returns>An array of custom attributes applied to this member, or an array with zero (0) elements if no attributes have been applied.</returns>
-		public static T[] GetCustomAttributes<T>(this MemberInfo methodInfo) where T : Attribute
+		public static T[] RetrieveCustomAttributes<T>(this MemberInfo methodInfo) where T : Attribute
 		{
 			return methodInfo.GetCustomAttributes(typeof(T), false) as T[];
 		}

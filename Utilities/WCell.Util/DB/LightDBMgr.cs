@@ -131,7 +131,7 @@ namespace WCell.Util.DB
 				var mappedFieldMap = mappedFields.GetOrCreate(table.Name);
 
 				SimpleDataColumn dataColumn;
-                var dbAttrs = member.GetCustomAttributes<DBAttribute>();
+                var dbAttrs = member.RetrieveCustomAttributes<DBAttribute>();
                 var attr = dbAttrs.Where(attribute => attribute is PersistentAttribute).FirstOrDefault() as PersistentAttribute;
 
 				if (String.IsNullOrEmpty(column))
